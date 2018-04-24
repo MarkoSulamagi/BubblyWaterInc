@@ -46,7 +46,6 @@ class BaseTestCase(LiveServerTestCase):
         """
         Creates a new database for the unit test to use
         """
-        self.truncate_all_tables()
         with self.app.app_context():
             db.create_all()
 
