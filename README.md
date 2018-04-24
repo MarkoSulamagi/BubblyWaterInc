@@ -1,3 +1,29 @@
+# Bubbly Water Inc.
+
+A small programming exercise. Assignment can be found [here](assignment.pdf).
+
+## Assumptions about assignment
+
+- One meter measures only hot or cold water. Not both together.
+- Content of meter reading is following:
+`{
+  "meter_id": "6769f62ffd987be1592fba44b0daab59",
+  "type": "HOT|COLD",
+  "measured_at": 1523952169,  # Unix Epoc time
+  "value": 200,
+  "battery": 49  # percentage
+}`
+- No load tests (keeping it out of scope this time)
+- Dashboard interface:
+    - No registration or authentication, forgot password, profile edit or new user creation
+    - Total daily consumption for all meters
+    - Dashboard for single customers:
+    - Daily consumptions for single customer
+    - Current battery info for meters on customer view
+- If there's some kind of disturbance when adding new readings (say power disconnect) then that's not handled in the solution.
+
+
+
 Steps to run the application in development:
 # Clone the project
 `git clone git@github.com:MarkoSulamagi/BubblyWaterInc.git`
@@ -39,7 +65,7 @@ After docker containers are running
 docker exec -it bubblywater_reactapp npm install --save redux
 
 # Run API unit tests
-docker exec -it bubblywater_api python -m unittest tests.py
+docker exec -it bubblywater_api python -m unittest tests
 
 
 
