@@ -1,7 +1,9 @@
+import { API_URL } from '../const';
+
 class MeterApi {
 
     static getMeterCount() {
-        return fetch('http://localhost:8444/api/meters/count').then(response => {
+        return fetch(`${API_URL}/api/meters/count`).then(response => {
             return response.json();
         }).catch(error => {
             return error;

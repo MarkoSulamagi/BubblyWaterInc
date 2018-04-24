@@ -1,6 +1,9 @@
+import { API_URL } from '../const';
+
+console.log(API_URL)
 class CustomerApi {
     static getAllCustomers() {
-        return fetch('http://localhost:8444/api/customers').then(response => {
+        return fetch(`${API_URL}/api/customers`).then(response => {
             return response.json();
         }).catch(error => {
             return error;
@@ -8,7 +11,7 @@ class CustomerApi {
     }
 
     static getCustomerCount() {
-        return fetch('http://localhost:8444/api/customers/count').then(response => {
+        return fetch(`${API_URL}/api/customers/count`).then(response => {
             return response.json();
         }).catch(error => {
             return error;
@@ -16,7 +19,7 @@ class CustomerApi {
     }
 
     static getCustomer(customer_id) {
-        return fetch('http://localhost:8444/api/customers/' + customer_id).then(response => {
+        return fetch(`${API_URL}/api/customers/${customer_id}`).then(response => {
             return response.json();
         }).catch(error => {
             return error;
