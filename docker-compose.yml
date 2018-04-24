@@ -1,0 +1,71 @@
+version: '3'
+services:
+
+  postgres:
+    restart: on-failure
+    container_name: bubblywater_postgres
+    image: sameersbn/postgresql:9.6-2
+    expose:
+      - "5432"
+    environment:
+      - DEBUG=true
+      - DB_USER=bubblywater
+      - DB_PASS=As1234
+      - DB_NAME=bubblywater,tests
+
+  nginx:
+    restart: on-failure
+    container_name: bubblywater_nginx
+    build:
+      context: ./dashboard_app/
+      dockerfile: nginx/nginx.docker
+    volumes:
+      - .:/var/www
+    ports:
+      - "8444:80"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1000m"
+        max-file: "5"
+
+  api:
+    restart: on-failure
+    container_name: bubblywater_api
+    build:
+      context: ./dashboard_app/api/
+      dockerfile: deployment/api.docker
+    volumes:
+      - ./dashboard_app/api/:/usr/src/app
+    expose:
+      - "8000"
+    environment:
+      - DEBUG=true
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=bubblywater
+      - POSTGRES_USERNAME=bubblywater
+      - POSTGRES_PASSWORD=As1234
+    depends_on:
+      - postgres
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1000m"
+        max-file: "5"
+
+  reactapp:
+    restart: on-failure
+    container_name: bubblywater_reactapp
+    build:
+      context: ./dashboard_app/reactapp/
+      dockerfile: deployment/reactapp.docker
+    volumes:
+      - ./dashboard_app/reactapp/:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3333:3000"
+
+  activemq:
+    restart: on-failure
+    container_name: bubblywater_activemq
+    image: webcenter/activemq:latest

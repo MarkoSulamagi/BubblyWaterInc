@@ -1,0 +1,12 @@
+.nav-item {
+    font-weight: 500;
+    padding: .5rem 1rem;
+    font-size: .875rem;
+    line-height: 1.5;
+}
+.feather {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+    margin-right: 3px;
+}
