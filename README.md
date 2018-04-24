@@ -55,7 +55,7 @@ ReactApp is handling frontend logic.
 ## Steps to run the application in development
 
 The application is 100% built on docker containers. Dev/test/staging and live environments are all run in docker containers.
-This will make development deployments as easy as production deployments and can be sure that all developers run with the same environment.
+This will make development environment setups easy and team can be sure that all developers run with the same environment.
 
 **To run the project in development**
 
