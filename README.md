@@ -43,13 +43,13 @@ React side that should be done differently. Requires some learning.
 ![alt text](Architecture.png)
 
 Architecture consist of 2 parts:
-- Meter readings processing (not developed)
+- Meter readings processing (not developed).
 The idea behind it was that the external service sends a message into ActiveMQ queue. The message consists meter reading data (see above). 
 Apache Camel mediates messages and tells micro-services that there's a new message and how to process it. Small service (stateless, easily scalable)
 inserts the data into PostgreSQL
-- Dashboard application (developed)
-On interface side, nginx is in front of React app and the REST API to make it scaleable. 
-REST API is a stateless Python 3 application running on Flask framework. ReactApp is handling frontend logic. 
+- Dashboard application (developed).
+Nginx is in front to add scalability. REST API is a stateless Python 3 application running on Flask framework. 
+ReactApp is handling frontend logic. 
 
 
 ## Steps to run the application in development
