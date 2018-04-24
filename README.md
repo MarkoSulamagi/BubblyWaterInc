@@ -59,49 +59,61 @@ This will make development environment setups easy and team can be sure that all
 
 **To run the project in development**
 
-**Clone the project**
+**1. Clone the project**
 `git clone git@github.com:MarkoSulamagi/BubblyWaterInc.git`
 
-**Install docker**
+**2. Install docker**
 This is the environment specific part. Installing docker on Linux OSs is usually quite easy. 
 I've noticed some installation issues with the Windows and Mac environments, but nothing that quick googling can't fix. 
+
 https://docs.docker.com/install/
 
 On Ubuntu 16.04 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
 
-**Install docker-compose**
+**3. Install docker-compose**
 https://docs.docker.com/compose/
 
 On Ubuntu 16.04 https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04
 
-**Build application**
+**4. Build application**
+
 `docker-compose build`
+
 Docker needs to download all the dependencies, so it could take a while.
 
-**Run application**
+**5. Run application**
+
 `docker-compose up`
+
 Docker needs to download all the dependencies, so it could take a while. 
 Depending on the speed of the internet. Downloads only happen on first run. 
 
-**Run DB migrations**
+**6. Run DB migrations**
+
 `docker exec -it bubblywater_api python manage.py db init`
+
 `docker exec -it bubblywater_api python manage.py db migrate`
+
 `docker exec -it bubblywater_api python manage.py db upgrade`
 
-**Seed database**
+**7.Seed database**
+
 `docker exec -it bubblywater_api python manage.py seed`
 
-**Visit http://localhost:3333**
+**8. Visit http://localhost:3333**
 
 ## Some development helpers. Only useful for additional development 
 
 **Run API integration tests**
+
 `docker exec -it bubblywater_api python -m unittest tests`
 
 **Purge database**
+
 `docker exec -it bubblywater_api python manage.py purge`
 
 **Install new JS library**
+
 `docker exec -it bubblywater_reactapp npm install --save redux`
 
 
