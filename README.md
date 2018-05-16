@@ -1,7 +1,7 @@
 # Bubbly Water Inc.
 
 A small programming exercise. Assignment can be found [here](assignment.pdf).
-Test environment can be found [here](http://52.178.39.62:3333) .
+Test environment can be found [here](http://ec2-35-159-11-120.eu-central-1.compute.amazonaws.com:3333) .
 
 ### Assumptions about assignment
 
