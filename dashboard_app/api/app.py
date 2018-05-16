@@ -6,7 +6,6 @@ from flask_cors import CORS, cross_origin
 from config import debug, get_database_url
 
 from models.models import db
-from resources.api_endpoints import ApiEndpoints
 from resources.customers import Customers, Customer, CustomerCount
 from resources.meters import MeterCount
 from resources.meter_readings import MeterReadings
@@ -22,7 +21,6 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 db.init_app(app)
 
 # TODO: Should be moved to Blueprint to make it testable
-api.add_resource(ApiEndpoints, '/api')
 api.add_resource(Customers, '/api/customers')
 api.add_resource(CustomerCount, '/api/customers/count')
 api.add_resource(MeterCount, '/api/meters/count')

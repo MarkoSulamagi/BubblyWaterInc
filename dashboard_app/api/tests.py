@@ -5,7 +5,6 @@ import requests
 from flask import Flask
 from flask_restful import Api, abort
 from flask_testing import LiveServerTestCase
-from resources.api_endpoints import ApiEndpoints
 from resources.customers import Customers, Customer, CustomerCount
 from resources.meters import MeterCount
 from resources.meter_readings import MeterReadings
@@ -29,7 +28,6 @@ class BaseTestCase(LiveServerTestCase):
 
         # TODO: Should be moved to Blueprint to make it testable
         api = Api(self.app)
-        api.add_resource(ApiEndpoints, '/api')
         api.add_resource(Customers, '/api/customers')
         api.add_resource(CustomerCount, '/api/customers/count')
         api.add_resource(Customer, '/api/customers/<int:customer_id>')
@@ -175,18 +173,6 @@ class GeneralApiTests(BaseTestCase):
     def test_server_is_up_and_running(self):
         response = requests.get(self.get_endpoint_url())
         self.assertEqual(response.status_code, 404)
-
-    def test_api_endpoints(self):
-        response = requests.get(self.get_endpoint_url('/api'))
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), [
-            'GET /api',
-            'GET /api/customers',
-            'GET /api/customers/count',
-            'GET /api/meters/count',
-            'GET /api/customers/<int:customer_id>',
-            'GET /api/meters/readings?dataset=daily-total&customer_id=123',
-        ])
 
 
 class CustomersEndpointTests(BaseTestCase):
